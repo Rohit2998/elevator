@@ -1,4 +1,7 @@
 from .models import Elevator
+'''
+  Function to create elevators inside an elevator system
+'''
 
 def create_elevators(number_of_elevators : int,system_id : int):
 

@@ -12,13 +12,17 @@ from .create_elevators import create_elevators
 
 
 class ElevatorSystemList(generics.ListAPIView):
-
+  '''
+  To fetch all the listed elevator systems.
+  '''
   queryset = ElevatorSystem.objects.all()
   serializer_class = ElevatorSystemSerializer
 
 
 class CreateElevatorSystem(generics.CreateAPIView):
-
+  '''
+  Create a new elevator system.
+  '''
   serializer_class = ElevatorSystemSerializer
 
   def perform_create(self, serializer):
@@ -31,7 +35,9 @@ class CreateElevatorSystem(generics.CreateAPIView):
 
 
 class ElevatorsList(generics.ListAPIView):
-
+  '''
+  list all the elevators and their status. 
+  '''
   serializer_class = ElevatorSerializer
 
   def get_queryset(self):
@@ -62,6 +68,9 @@ class ViewSingleElevator(generics.RetrieveAPIView):
 
 
 class UpdateSingleElevator(generics.UpdateAPIView):
+  '''
+  to update single elevator
+  '''
 
   serializer_class = ElevatorSerializer
 
@@ -82,6 +91,9 @@ class UpdateSingleElevator(generics.UpdateAPIView):
 
 
 class CreateElevatorRequest(generics.CreateAPIView):
+  '''
+  request for a specific elevator, 
+  '''
 
   serializer_class = ElevatorRequestSerializer
   def perform_create(self, serializer):
@@ -98,6 +110,9 @@ class CreateElevatorRequest(generics.CreateAPIView):
     
     
 class ElevatorRequestList(generics.ListAPIView):
+  '''
+  List all the requests for a given elevator
+  '''
   serializer_class = ElevatorRequestSerializerAll
   filterset_fields = ['is_active']
 
@@ -116,7 +131,9 @@ class ElevatorRequestList(generics.ListAPIView):
 
 
 class FetchDestination(APIView):
-  
+  '''
+  Fetch the next destination floor for a given elevator
+  '''
   def get(self, request,id,pk):
     system_id = id
     elevator_number = pk

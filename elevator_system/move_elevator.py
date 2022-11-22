@@ -10,6 +10,9 @@ class RunThread(Thread):
 
 
 def move_elevator(elevator_object : Elevator,elevator_system : ElevatorSystem):
+  '''
+  Filter all the requests for a given elevator
+  '''
   requests_pending = ElevatorRequest.objects.filter(
     elevator = elevator_object,
     is_active = True,
@@ -65,7 +68,9 @@ def move_elevator(elevator_object : Elevator,elevator_system : ElevatorSystem):
 
 
 def check_elevator_system(elevator_system : ElevatorSystem):
-
+  '''
+  Filter all the elevators running in an elevator system
+  '''
   elevators_running = Elevator.objects.filter(
     elevator_system = elevator_system,
     is_operational = True,

@@ -3,6 +3,9 @@ from django.db import models
 
 
 class ElevatorSystem(models.Model):
+  '''
+  Elevator system Model. It is building containing a number of elevators
+  '''
 
   system_name = models.CharField(max_length = 20)
   max_floor = models.IntegerField()
@@ -14,7 +17,10 @@ class ElevatorSystem(models.Model):
 
 
 class Elevator(models.Model):
-
+  '''
+  Elevator object model: A single elevator that can move up and down. 
+  
+  '''
   class RunningStatus(models.IntegerChoices):
     '''
     Choices for running status of the elevator system
@@ -40,7 +46,9 @@ class Elevator(models.Model):
 
 
 class ElevatorRequest(models.Model):
-
+  '''
+  Request specific elevator
+  '''
   elevator = models.ForeignKey(Elevator, on_delete=models.CASCADE)
   requested_floor = models.PositiveSmallIntegerField()
   destination_floor = models.PositiveSmallIntegerField()
